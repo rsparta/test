@@ -1,5 +1,6 @@
 #include "Class.h"
 
-void Class::test()
+int  Class::test()
 {
+    return 0;
 }
