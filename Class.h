@@ -3,4 +3,5 @@
 class Test
 {
 	void addName();
+	int test();
 };

@@ -1,6 +1,6 @@
 #include "Class.h"
 
-int  Class::test()
+int  Test::test()
 {
     return 0;
 }
