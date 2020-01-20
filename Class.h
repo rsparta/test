@@ -2,4 +2,5 @@
 
 class Test
 {
+	void addName();
 };
