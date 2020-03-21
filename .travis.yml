@@ -4,7 +4,8 @@ service: docker
 
 before_install:
   - docker pull centos:7.6.1810
-  
+  - docker ps -a
+
 #  - echo "Test"
 #  - mkdir build
 #  - cd build
