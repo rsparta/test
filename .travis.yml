@@ -5,8 +5,8 @@ compiler:
 - gcc
 
 script:
-  echo "Test"
-  mkdir build
-  cd build
-  cmake ..
-  make
+  - echo "Test"
+  - mkdir build
+  - cd build
+  - cmake ..
+  - make
