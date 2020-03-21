@@ -1,10 +1,11 @@
 #include "Class.h"
+#include <iostream>
 
-void Test::addName()
-{
+void Test::addName() {
+  std::cout << "add name" << std::endl;
 }
 
-int  Test::test()
-{
-    return 0;
+int Test::test() {
+  std::cout << "test" << std::endl;
+  return 0;
 }

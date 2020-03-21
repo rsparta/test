@@ -1,7 +1,7 @@
 #pragma once
 
-class Test
-{
-	void addName();
-	int test();
+class Test {
+ public:
+  void addName();
+  int test();
 };
