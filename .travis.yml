@@ -1,12 +1,21 @@
 language: cpp
-sudo: required
-dist: bionic
-compiler:
-- gcc
+
+service: docker
+
+before_install:
+  - docker pull centos:7.6.1810
+  - docker run --name buildvm -td centos:7.6.1810 /bin/bash
+
+install:
+  - pwd
+  - ls -l
+  - docker exec -ti buildvm bash -c "cat /etc/redhat-release"
+  - docker exec -ti buildvm bash -c "yum install -q -y wget"
+  - docker exec -ti buildvm bash -c "wget https://github.com/Kitware/CMake/releases/download/v3.16.4/cmake-3.16.4-Linux-x86_64.tar.gz"
+  - docker exec -ti buildvm bash -c "tar -xzvf cmake-3.16.4-Linux-x86_64.tar.gz"
+  - docker exec -ti buildvm bash -c "ln -s /cmake-3.16.4-Linux-x86_64/bin/cmake /usr/bin"
+  - docker exec -ti buildvm bash -c "ln -s /cmake-3.16.4-Linux-x86_64/bin/ctest /usr/bin"
+  - docker cp . buildvm:/repo
 
 script:
-  - echo "Test"
-  - mkdir build
-  - cd build
-  - cmake ..
-  - make
+  - docker exec -ti buildvm bash -c "cd repo && ./build.sh"
