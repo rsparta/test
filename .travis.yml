@@ -4,6 +4,7 @@ service: docker
 
 before_install:
   - docker pull centos:7.6.1810
+  - docker run --name buildvm centos:7.6.1810 /bin/bash make
   - docker ps -a
 
 script:
