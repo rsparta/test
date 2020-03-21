@@ -4,8 +4,11 @@ service: docker
 
 before_install:
   - docker pull centos:7.6.1810
-  - docker run --name buildvm centos:7.6.1810 /bin/bash make
-  - docker ps -a
+  - docker run --name buildvm -td centos:7.6.1810 /bin/bash
+
+install:
+  - docker exec -ti buildvm bash -c "cat /etc/redhat-release"
+  - docker exec -ti buildvm bash -c "yum install -q -y cmake"
 
 script:
   - echo "Test"
