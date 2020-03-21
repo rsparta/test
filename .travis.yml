@@ -11,7 +11,7 @@ install:
   - ls -l
   - docker exec -ti buildvm bash -c "cat /etc/redhat-release"
   - docker exec -ti buildvm bash -c "yum install -q -y cmake"
-  - docker cp test buildvm:/repo
+  - docker cp . buildvm:/repo
 
 script:
   - docker exec -ti buildvm bash -c "cd repo && ./build.sh"
