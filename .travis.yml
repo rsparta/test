@@ -7,6 +7,8 @@ before_install:
   - docker run --name buildvm -td centos:7.6.1810 /bin/bash
 
 install:
+  - pwd
+  - ls -l
   - docker exec -ti buildvm bash -c "cat /etc/redhat-release"
   - docker exec -ti buildvm bash -c "yum install -q -y cmake"
   - docker cp test buildvm:/repo
