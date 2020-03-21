@@ -9,11 +9,7 @@ before_install:
 install:
   - docker exec -ti buildvm bash -c "cat /etc/redhat-release"
   - docker exec -ti buildvm bash -c "yum install -q -y cmake"
+  - docker cp test buildvm:/repo
 
 script:
-  - cat /etc/redhat-release
-  - echo "Test"
-  - mkdir build
-  - cd build
-  - cmake ..
-  - make
+  - docker exec -ti buildvm bash -c "cd repo && ./build.sh"
