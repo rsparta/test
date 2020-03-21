@@ -1,12 +1,12 @@
 language: cpp
-sudo: required
-dist: bionic
-compiler:
-- gcc
 
-script:
-  - echo "Test"
-  - mkdir build
-  - cd build
-  - cmake ..
-  - make
+service: docker
+
+before_install:
+  - docker pull centos:7.6.1810
+  
+#  - echo "Test"
+#  - mkdir build
+#  - cd build
+#  - cmake ..
+#  - make
