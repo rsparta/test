@@ -6,3 +6,7 @@ compiler:
 
 script:
   echo "Test"
+  mkdir build
+  cd build
+  cmake ..
+  make
