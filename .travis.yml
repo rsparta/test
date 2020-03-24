@@ -17,4 +17,4 @@ install:
   - docker exec -ti buildvm bash -c "ls -l /"
 
 script:
-  - docker exec -ti buildvm bash --login -c "cd /repo && ./build.sh"
+  - docker exec -ti buildvm bash -c "cd /repo && ./build.sh"
