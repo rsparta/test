@@ -3,6 +3,7 @@ language: cpp
 service: docker
 
 before_install:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker pull rsparta/build:7021.1267
   - docker run --name buildvm -td rsparta/build:7021.1267 /bin/bash
 
