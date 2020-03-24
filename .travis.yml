@@ -3,8 +3,8 @@ language: cpp
 service: docker
 
 before_install:
-  - docker pull centos:7.6.1810
-  - docker run --name buildvm -td centos:7.6.1810 /bin/bash
+  - docker pull rsparta/build:7021.1267
+  - docker run --name buildvm -td rsparta/build:7021.1267 /bin/bash
 
 install:
   - pwd
