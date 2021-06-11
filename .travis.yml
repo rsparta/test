@@ -4,17 +4,16 @@ service: docker
 
 before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker pull rsparta/build:7021.1267
-  - docker run --name buildvm -td rsparta/build:7021.1267 /bin/bash
+  - docker run --name buildenv --tty --detach rsparta/build:7021.1267 /bin/bash
 
 install:
   - pwd
   - ls -l
-  - docker exec -ti buildvm bash -c "cat /etc/redhat-release"
-  - docker cp . buildvm:/repo
-  - docker exec -ti buildvm bash -c "pwd"
-  - docker exec -ti buildvm bash -c "ls -l"
-  - docker exec -ti buildvm bash -c "ls -l /"
+  - docker exec --tty --interactive buildenv bash -c "cat /etc/redhat-release"
+  - docker cp . buildenv:/repo
+  - docker exec --tty --interactive buildenv bash -c "pwd"
+  - docker exec --tty --interactive buildenv bash -c "ls -l"
+  - docker exec --tty --interactive buildenv bash -c "ls -l /"
 
 script:
-  - docker exec -ti buildvm bash --login -c "cd /repo && ./build.sh"
+  - docker exec --tty --interactive buildenv bash --login -c "cd /repo && ./build.sh"
